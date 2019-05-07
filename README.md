@@ -6,7 +6,15 @@ As a framework, the key feature is Dependency Injection (DI) and Inversion of Co
 	
 `@Autowired` - tell Spring: find the correct match and inject this bean
 
-Spring Framework was built using DI with Spring modules like Spring JDBC, Spring MVC, Spring AOP, Spring Test, etc. With this module structure Spring reduces boilerplate code, code duplication and promote decoupling and unit testability. Spring also has a good integration with other frameworks.
+Spring Framework was built using DI with Spring modules like Spring JDBC, Spring MVC, Spring AOP, Spring Test, etc. With this module structure Spring reduces boilerplate code, code duplication and promote decoupling and unit testability. Spring also has a good integration with other framework.
+
+Basic Spring base project:
+- Spring - core, beans, context, aop
+- Web MVC - (Spring MVC)
+- Jackson - for JSON Binding
+- Validation - Hibernate Validator, Validation API
+- Embedded Servlet Container - Tomcat
+- Logging - logback, slf4j
 
 ### Spring Boot
 Spring Boot is a project to allow create new applications easy and without waste time with configuration, based on frameworks available on the CLASSPATH Spring Boot can provide basic configuration.
@@ -56,7 +64,20 @@ Embedded container, also provide an embedded container Tomcat or Jetty
 - Install
 - Deploy
 
+### MongoDB
+
+### Mokito 
+
 ### Practical Time
+
+Tools used:
+- Java8
+- Eclipse 
+- STS eclipse plugin
+- Maven eclipse plugin
+- MongoDB (https://www.mongodb.com/cloud)
+- Postman (https://www.getpostman.com/)
+
 
 ### Reference
 * Spring Initializer
