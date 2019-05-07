@@ -1,5 +1,5 @@
 # Spring Boot entry
-###Spring Framework (problem solve)
+### Spring Framework (problem solve)
 As a framework, the key feature is Dependency Injection (DI) and Inversion of Control (IOC) that allow develop loosely coupled applications make easier to unit test.
 
 `@Component` - tell Spring: manage this bean!
@@ -8,7 +8,7 @@ As a framework, the key feature is Dependency Injection (DI) and Inversion of Co
 
 Spring Framework was built using DI with Spring modules like Spring JDBC, Spring MVC, Spring AOP, Spring Test, etc. With this module structure Spring reduces boilerplate code, code duplication and promote decoupling and unit testability. Spring also has a good integration with other frameworks.
 
-###Spring Boot
+### Spring Boot
 Spring Boot is a project to allow create new applications easy and without waste time with configuration, based on frameworks available on the CLASSPATH Spring Boot can provide basic configuration.
 
 `@SpringBootApplication`
@@ -26,13 +26,13 @@ To manage many configurations necessary to build an application Spring Boot has 
 
 Embedded container, also provide an embedded container Tomcat or Jetty
 
-###MAVEN
+### MAVEN
 >by me:
 "Tool which you use to manage the libraries, and much more!"
 > by Apache:
 "can be used for building and managing any Java-based project."
 	
-####Quickly overview:
+#### Quickly overview:
 
 * Making the build process easy
 	- Manage dependency, run locally (Tomcat or Jetty)
@@ -45,7 +45,7 @@ Embedded container, also provide an embedded container Tomcat or Jetty
 * Allowing transparent migration to new features
 	- generate projects based on Archetype
 	
-####Build Life Cycle
+#### Build Life Cycle
 
 - Validate
 - Compile
