@@ -9,8 +9,7 @@ public class News {
 	public News() {
 	}
 
-	public News(String id, String author, String title, String msg) {
-		this.id = id;
+	public News(String author, String title, String msg) {
 		this.author = author;
 		this.title = title;
 		this.msg = msg;
@@ -46,6 +45,11 @@ public class News {
 
 	public void setMsg(String msg) {
 		this.msg = msg;
+	}
+
+	@Override
+	public String toString() {
+		return "News [id=" + id + ", author=" + author + ", title=" + title + ", msg=" + msg + "]";
 	}
 
 }

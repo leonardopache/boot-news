@@ -1,8 +1,8 @@
 package es.sopratraining.bootnews;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.CoreMatchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -12,6 +12,7 @@ import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Matchers;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -27,14 +28,14 @@ import es.sopratraining.bootnews.repository.NewsRepository;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class TestAll {
+public class TestNewsController {
 
 	@Autowired
 	private HomeController homeController;
 
 	@Autowired
 	private MockMvc mockMvc;
-	
+
 	@MockBean
 	NewsRepository newsRepository;
 
@@ -46,19 +47,38 @@ public class TestAll {
 	@Test
 	public void testContentController() throws Exception {
 		this.mockMvc.perform(get("/")).andDo(print()).andExpect(status().isOk())
-				.andExpect(content().string(containsString("Hello Sopra")));
+				.andExpect(content().string("Hello Sopra"));
 	}
-	
+
 	@Test
-	public void testGetAllNews() throws Exception {
+	public void testGETAllNews() throws Exception {
 		Mockito.when(newsRepository.findAll()).thenReturn(getNewsMocked());
+
 		this.mockMvc.perform(get("/news")).andDo(print()).andExpect(status().isOk());
+	}
+
+	@Test
+	public void testPOSTNewsFail() throws Exception {
+		Mockito.when(newsRepository.findAll()).thenThrow(new RuntimeException());
+
+		this.mockMvc.perform(post("/news")).andDo(print()).andExpect(status().is4xxClientError());
+	}
+
+	@Test
+	public void testPOSTNews() throws Exception {
+		Mockito.when(newsRepository.save((News) Matchers.any(Object.class))).thenReturn(getOneNewsMocked());
+
+		this.mockMvc.perform(post("/news")).andDo(print()).andExpect(status().is4xxClientError());
 	}
 
 	private List<News> getNewsMocked() {
 		List<News> list = new ArrayList<>();
-		News news = new News("123", "Leonardo", "News Title", "msg");
+		News news = new News("Leonardo", "News Title", "msg");
 		list.add(news);
 		return list;
+	}
+
+	private News getOneNewsMocked() {
+		return new News("author", "title", "msg");
 	}
 }
